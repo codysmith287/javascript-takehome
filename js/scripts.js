@@ -10,4 +10,3 @@ let birthday = new Date(prompt("What is your birthday? (MM/DD/YYYY)"));
     alert ("Please reload the web page and enter the correct date when prompted.")
  };
 
-// takehome complete
