@@ -9,3 +9,7 @@ let birthday = new Date(prompt("What is your birthday? (MM/DD/YYYY)"));
  } else {
     alert ("Please reload the web page and enter the correct date when prompted.")
  };
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8b917f2c6110a1db320e2b62bcca80d14f954e9
