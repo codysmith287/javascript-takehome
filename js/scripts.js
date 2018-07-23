@@ -1,43 +1,40 @@
-/* Takehome Day 2
+// Day 6 Takehome
+// Write a program that converts temperatures. It should:
 
-let firstName = prompt("What is your first name?", "John");
-let lastName = prompt("What is your last name?", "Smith");
-console.log(firstName);
-alert (lastName + " is a cool last name!");
-let birthday = new Date(prompt("What is your birthday? (MM/DD/YYYY)"));
+// 1. Ask your user to give you a scale (Celcius or Fahrenheit) and the tempurature they want to convert. So if they give you 90 Fahrenheit, they would want you to convert 90 degrees Fahrenheit to whatever that is in Celcius.
 
- if (confirm (firstName + " " + lastName + ", are you sure " + birthday + " is your correct birthday?")) {
-    alert ("Hurray! " + birthday + " is a historic day in which an awesome person was born!");
- } else {
-    alert ("Please reload the web page and enter the correct date when prompted.")
- };
+const h3 = document.querySelector('#temp');
 
- End of Takehome Day 2 */
+let scale = prompt("Which is your preferred temperature scale(C or F)?", "C or F");
 
- // Takehome Day 3
+let temp = prompt("What is the temperature? (only the number)", "99");
 
- let myName = prompt('What is your name?');
- let favColor = prompt(`Ok ${myName}, so pick your favorite color from the following list and we'll tell you what the color is associated with. List of the colors to choose from: red, orange, yellow, green, blue, pink, purple, black, white, grey.`)
-  if(favColor.toLowerCase() === "red") {
-    alert(`Ok ${myName}, red is associated with energy, war, danger, strength, power, determination as well as passion, desire, and love.`);
-  } else if(favColor.toLowerCase() === "orange") {
-    alert(`Ok ${myName}, orange is associated with joy, sunshine, and the tropics.`)
-  } else if(favColor.toLowerCase() === "yellow") {
-    alert(`Ok ${myName}, yellow is associated with joy, happiness, intellect, and energy.`)
-  } else if(favColor.toLowerCase() === "green") {
-    alert(`Ok ${myName}, green is associated with growth, harmony, freshness, and fertility.`)
-  } else if(favColor.toLowerCase() === "blue") {
-    alert(`Ok ${myName}, blue is associated with depth, stability, tranquility, and calmness.`)
-  } else if(favColor.toLowerCase() === "pink") {
-    alert(`Ok ${myName}, pink is associated with romance, love, and friendship.`)
-  } else if(favColor.toLowerCase() === "purple") {
-    alert(`Ok ${myName}, purple is associated with wisdom, dignity, independence, creativity, mystery, and magic.`)
-  } else if(favColor.toLowerCase() === "black") {
-    alert(`Ok ${myName}, black is associated with power, elegance, formality, death, evil, and mystery.`)
-  } else if(favColor.toLowerCase() === "white") {
-    alert(`Ok ${myName}, white is associated with light, goodness, innocence, purity, and virginity.`)
-  } else if(favColor.toLowerCase() === "grey") {
-    alert(`Ok ${myName}, grey is associated with meanings of dull, dirty, and dingy, as well as formal, conservative, and sophisticated.`)
+// 2. Employ a function that accepts those two values as arguments: temperature and scale (either celcius or fahrenheit) and converts the tempurature they gave you to the opposite scale.
+
+function convertTemp(scale, temp) {
+  scale = scale.toLowerCase();
+  let returnValue;
+  let oppValue = scale === 'c' ? 'Fahrenheit' : 'Celcius';
+  temp = parseInt(temp);
+  if (!isNaN(temp)) {
+    returnValue = scale === 'c' ? (1.8 * temp) + 32 : (5 / 9) * (temp - 32);
+
+    // 3. Display the temperature in an h3 with minimal styling.
+    h3.innerText = `Your temperature is ${returnValue} ${oppValue}!`;
   } else {
-    alert(`${myName}... You did not pick a color from the given list.`)
-  };
+    scale = prompt("Which is your preferred temperature scale(C or F)?", "C or F");
+    temp = prompt("What is the temperature? (only the number)", "99");
+    convertTemp(scale, temp);
+  }
+};
+
+convertTemp(scale, temp);
+
+// 4. From that point on, when the user clicks on the h3, run the function to convert the temperature back and forth between Celcius and Fahrenheit.
+// 5. Display the converted temperature in the h3 each time it is changed.
+h3.addEventListener('click', (e) => {
+  let valueArray = e.target.innerText.split(' ');
+  scale = valueArray[valueArray.length - 1] === 'Celcius' ? 'C' : 'F';
+  temp = valueArray[valueArray.length - 2];
+  convertTemp(scale, temp);
+});
