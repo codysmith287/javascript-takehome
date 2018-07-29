@@ -1,0 +1,45 @@
+.center {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+}
+
+.red-bg {
+  background-color: #AA1100;
+  color: #FFFFFF;
+}
+
+.orange-bg {
+  background-color: #FF4400;
+  color: #FFFFFF;
+}
+
+.yellow-bg {
+  background-color: #FFBB11;
+}
+
+.green-bg {
+  background-color: #55AA00;
+  color: #FFFFFF;
+}
+
+.blue-bg {
+  background-color: #000055;
+  color: #FFFFFF;
+}
+
+.indigo-bg {
+  background-color: #310062;
+  color: #FFFFFF;
+}
+
+.violet-bg {
+  background-color: #4B0082;
+  color: #FFFFFF;
+}
